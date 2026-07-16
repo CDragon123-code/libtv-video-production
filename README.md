@@ -1,9 +1,8 @@
-# OpenClaw Skill: LibTV 视频创作全流程
+# OpenClaw LibTV Video Production Agent Script Headless CLI Workflow Local First Privacy First
 
-> **Skill ID:** `libtv-video-production`  
-> **版本:** 1.0.0  
-> **适用平台:** OpenClaw + LibTV CLI v1.1.1+  
-> **许可证:** MIT
+> LibTV Video Production | OpenClaw Agent Script | Headless CLI | AI Video Workflow | Character Anchor | Image2Video | Seedance 2.0 Mini | Zero Dependency | Cross Platform
+
+**OpenClaw Skill - 基于 LibTV CLI 的 AI 视频创作全流程，含标准工作流、角色锚点方案和踩坑避雷指南。**
 
 ## 简介
 
@@ -11,22 +10,18 @@
 
 ## 核心能力
 
-- 🎬 **标准 7 步工作流**：素材准备 → 项目创建 → 画布搭建 → 角色锚点 → 场景锚点 → 视频生成 → 下载合成
-- 🧑‍🤝‍🧑 **角色统一性保证**：通过人物呈现板（四合一锚点）确保每个镜头中角色外貌一致
-- ⚡ **最佳模型选择**：Z-image Turbo 用于写真锚点，Seedance 2.0 Mini 用于视频生成
-- 🚫 **8 条避坑清单**：覆盖 modeType、缓存、prompt、并发等常见问题
-- 💰 **积分预估**：提前计算消耗，减少重试浪费
+- 标准 7 步工作流：素材准备 -> 项目创建 -> 画布搭建 -> 角色锚点 -> 场景锚点 -> 视频生成 -> 下载合成
+- 角色统一性保证：通过人物呈现板（四合一锚点）确保每个镜头中角色外貌一致
+- 最佳模型选择：Z-image Turbo 用于写真锚点，Seedance 2.0 Mini 用于视频生成
+- 8 条避坑清单：覆盖 modeType、缓存、prompt、并发等常见问题
+- 积分预估：提前计算消耗，减少重试浪费
 
 ## 安装
 
 将 `SKILL.md` 复制到 OpenClaw 的 skills 目录：
 
 ```bash
-# 推荐位置
 cp SKILL.md ~/.openclaw/workspace/skills/libtv-video-production/
-
-# 或通过 OpenClaw CLI
-openclaw skill install libtv-video-production
 ```
 
 ## 自动触发
@@ -70,7 +65,7 @@ libtv-video-production/
 |------|------|
 | 角色锚点图（2张） | ~20 |
 | 场景锚点图（1张） | ~10 |
-| 视频生成（8镜×66秒） | ~1100 |
+| 视频生成（8镜x66秒） | ~1100 |
 | **理想总计** | **~1130** |
 
 ## 贡献

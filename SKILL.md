@@ -8,14 +8,15 @@ triggers:
   - "AI视频"
   - "视频创作"
   - "libtv视频"
-  - "水芯"
   - "短视频脚本"
   - "分镜脚本"
   - "video production"
 autoTrigger: true
 ---
 
-# LibTV 视频创作全流程
+# OpenClaw LibTV Video Production Agent Script Headless CLI Workflow Local First Privacy First
+
+> LibTV Video Production | OpenClaw Agent Script | Headless CLI | AI Video Workflow | Character Anchor | Image2Video | Seedance 2.0 Mini | Zero Dependency | Cross Platform
 
 基于 OpenClaw + LibTV CLI 完成 AI 短视频的标准化流程。从画布搭建到最终视频下载，含已验证的最佳实践和避坑指南。
 
@@ -58,10 +59,10 @@ libtv project use <projectUuid>
 
 **分组创建：**
 ```bash
-libtv group create "📋 输入区"
-libtv group create "📝 脚本区"
-libtv group create "🎬 分镜区"
-libtv group create "🖼️ 生产区"
+libtv group create "输入区"
+libtv group create "脚本区"
+libtv group create "分镜区"
+libtv group create "生产区"
 ```
 
 **输入区节点（文本类型）：**
@@ -78,12 +79,12 @@ libtv group create "🖼️ 生产区"
 libtv group <groupNodeKey> --node <nodeKey>
 ```
 
-**⚠️ 文本节点写入内容：**
+**WARNING 文本节点写入内容：**
 ```bash
 # 正确语法 - content 必须是 JSON 数组格式
 libtv node <nodeKey> -u content='["行1","行2","行3"]'
 
-# ❌ 错误：不存在 --content 参数
+# 错误：不存在 --content 参数
 libtv node <nodeKey> --content "..."
 ```
 
@@ -111,9 +112,9 @@ libtv node <nodeKey> \
 libtv node <nodeKey> --run
 ```
 
-**⚠️ 常见问题：**
-- 如果生成图偏动画/插画风格 → 换 Z-image Turbo，prompt 加 `photorealistic, DSLR, hyperrealistic`
-- 如果格式不是四合一板式 → 在 prompt 中明确 `four panel layout`
+**WARNING 常见问题：**
+- 如果生成图偏动画/插画风格 -> 换 Z-image Turbo，prompt 加 `photorealistic, DSLR, hyperrealistic`
+- 如果格式不是四合一板式 -> 在 prompt 中明确 `four panel layout`
 - 不要生成分角度的多张图，一张呈现板即可
 
 ### 5. 生成场景锚点
@@ -129,10 +130,10 @@ libtv node <nodeKey> --run
 
 ### 6. 创建视频节点并触发生成
 
-**⚠️ 这是全流程最容易出错的一步。三个关键决策：**
+**WARNING 这是全流程最容易出错的一步。三个关键决策：**
 
-| 决策 | ✅ 正确 | ❌ 错误 |
-|------|---------|---------|
+| 决策 | 正确 | 错误 |
+|------|------|------|
 | modeType | image2video | text2video（无法连锚点图） |
 | 模型 | Seedance 2.0 Mini | 带 VIP 标签的模型（额外积分） |
 | prompt | 完整对白 + 角色描述 | 仅动作描述（台词丢失） |
@@ -162,7 +163,7 @@ libtv node <videoNodeKey> \
   --run
 ```
 
-**⚠️ 必须先用 --left-add 连接锚点，再切 modeType 和 prompt。连接后 CLI 会自动将图片 URL 填入 imageList。**
+**WARNING 必须先用 --left-add 连接锚点，再切 modeType 和 prompt。连接后 CLI 会自动将图片 URL 填入 imageList。**
 
 **镜头数量建议：**
 - 总时长控制在 60-70 秒
@@ -186,35 +187,35 @@ libtv download -n "镜2-V-xxx"
 # 5. 导出
 ```
 
-## ⚠️ 踩坑避雷清单
+## 踩坑避雷清单
 
 ### 坑1：文本节点写入
-- ❌ `--content "..."` — 不存在此参数
-- ✅ `-u content='["..."]'` — JSON 数组格式
+- WRONG: `--content "..."` -- 不存在此参数
+- RIGHT: `-u content='["..."]'` -- JSON 数组格式
 
 ### 坑2：角色锚点风格
-- ❌ Seedream 4.5 生成"三视图""九宫格" → 容易滑向插画风格
-- ✅ Z-image Turbo + `photorealistic, DSLR, hyperrealistic` prompt
+- WRONG: Seedream 4.5 生成"三视图""九宫格" -> 容易滑向插画风格
+- RIGHT: Z-image Turbo + `photorealistic, DSLR, hyperrealistic` prompt
 
 ### 坑3：角色锚点格式
-- ❌ 正面+半侧面+侧面分3张图 → 引用麻烦
-- ✅ 一张四合一呈现板 → 一个锚点解决所有角度
+- WRONG: 正面+半侧面+侧面分3张图 -> 引用麻烦
+- RIGHT: 一张四合一呈现板 -> 一个锚点解决所有角度
 
 ### 坑4：modeType 错误
-- ❌ text2video 连接锚点图 → 报错"无法使用纯文生视频"
-- ✅ image2video 连接锚点图 → 自动将图片填入 imageList
+- WRONG: text2video 连接锚点图 -> 报错"无法使用纯文生视频"
+- RIGHT: image2video 连接锚点图 -> 自动将图片填入 imageList
 
 ### 坑5：切换 modeType 后 prompt 缩水
-- ❌ image2video 只写动作描述 → 台词丢失
-- ✅ image2video 仍然写完整对白 + 角色描述
+- WRONG: image2video 只写动作描述 -> 台词丢失
+- RIGHT: image2video 仍然写完整对白 + 角色描述
 
 ### 坑6：Seedance 缓存
-- 相同参数 + 相同 prompt → 直接返回缓存，taskId 不变
+- 相同参数 + 相同 prompt -> 直接返回缓存，taskId 不变
 - 解决：稍微改变 prompt（去掉括号或调标点），观察 taskId 是否新
 
 ### 坑7：模型名含空格需引号
-- ❌ `-s model=Seedance 2.0 Mini` → 报错
-- ✅ `-s 'model=Seedance 2.0 Mini'`
+- WRONG: `-s model=Seedance 2.0 Mini` -> 报错
+- RIGHT: `-s 'model=Seedance 2.0 Mini'`
 
 ### 坑8：并发限制
 - 同时触发过多 --run 可能报"正在发起任务请稍候"
